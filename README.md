@@ -1,6 +1,6 @@
 # RESTful Rust
 
-This project is a RESTFul API built with Rust and the actix-web framework.
+This project is a **RESTFul API** built with **Rust** and the **actix-web** framework.
 
 ## Endpoints
 
@@ -20,7 +20,7 @@ This project is a RESTFul API built with Rust and the actix-web framework.
 
 ## Code Structure
 
-The `src` directory contains the following Rust modules:
+The [`src`](./src) directory contains the following Rust modules:
 
 - [`handler`](./src/handler.rs): Contains the HTTP request handlers for the API endpoints.
 - [`model`](./src/model.rs): Contains the data model for posts.
