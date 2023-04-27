@@ -16,17 +16,17 @@ This project is a **RESTFul API** built with **Rust** and the **actix-web** fram
 2. Clone the repository to your local machine.
 3. Run the command `cargo install` to install the necessary dependencies.
 4. Run the command `cargo run` in the project directory to start the server.
-5. Access the API endpoints using a tool such as [Postman](https://www.postman.com) or cURL.
+5. Access the API endpoints using a tool such as curl.
 
 ## Code Structure
 
-The [`src`](./src) directory contains the following Rust modules:
+The `src` directory contains the following Rust modules:
 
-- [`handler`](./src/handler.rs): Contains the HTTP request handlers for the API endpoints.
-- [`model`](./src/model.rs): Contains the data model for posts.
-- [`repository`](./src/repository.rs): Contains the SQLite database repository for storing and retrieving posts.
-- [`router`](./src/router.rs): Contains the routing information for the API endpoints.
-- [`main.rs`](./src/main.rs): The main entry point for the application.
+- `handler`: Contains the HTTP request handlers for the API endpoints.
+- `model`: Contains the data model for posts.
+- `repository`: Contains the SQLite database repository for storing and retrieving posts.
+- `router`: Contains the routing information for the API endpoints.
+- `main.rs`: The main entry point for the application.
 
 ## Contributing
 
