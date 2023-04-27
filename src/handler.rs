@@ -16,10 +16,7 @@ pub async fn get_post(path: Path<i32>, data: Data<Repository>) -> HttpResponse {
     HttpResponse::Ok().json(post)
 }
 
-pub async fn create_post(
-    json: Json<PostRequest>,
-    data: Data<Repository>,
-) -> HttpResponse {
+pub async fn create_post(json: Json<PostRequest>, data: Data<Repository>) -> HttpResponse {
     let post = json.into_inner();
     data.create_post(post);
     HttpResponse::Ok().finish()
