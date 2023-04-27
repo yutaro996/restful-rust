@@ -4,7 +4,7 @@ use actix_web::{web, HttpResponse};
 
 pub async fn get_posts(data: web::Data<Repository>) -> HttpResponse {
     let posts = data.get_posts();
-    HttpResponse::Ok().json(&posts)
+    HttpResponse::Ok().json(posts)
 }
 
 pub async fn get_post(path: web::Path<i32>, data: web::Data<Repository>) -> HttpResponse {
