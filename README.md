@@ -149,6 +149,10 @@ The `src` directory contains the following Rust modules:
 - `repository`: Contains the SQLite database repository for storing and retrieving posts.
 - `main.rs`: The main entry point for the application.
 
+## License
+
+This project is licensed under the terms of the MIT License. See the [LICENSE](./LICENSE) file for details.
+
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request.
