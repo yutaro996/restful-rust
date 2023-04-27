@@ -9,8 +9,10 @@ use repository::Repository;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    let repo = Repository::new("posts.db");
+    dotenv::dotenv().ok();
     tracing_subscriber::fmt::init();
+    let database_url = std::env::var("DATABASE_URL").unwrap();
+    let repository = Repository::new(&database_url);
     HttpServer::new(move || {
         let cors = Cors::default()
             .allow_any_origin()
@@ -19,7 +21,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .wrap(cors)
             .wrap(Logger::default())
-            .app_data(Data::new(repo.clone()))
+            .app_data(Data::new(repository.clone()))
             .configure(router::configure)
     })
     .bind("0.0.0.0:8080")?
