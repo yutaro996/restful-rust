@@ -1,11 +1,11 @@
-use crate::handler::{create_post, delete_post, get_post, get_posts, update_post};
-use actix_web::web::{delete, get, patch, post, ServiceConfig};
+use crate::handler;
+use actix_web::web;
 
-pub fn configure(config: &mut ServiceConfig) {
+pub fn configure(config: &mut web::ServiceConfig) {
     config
-        .route("/posts", get().to(get_posts))
-        .route("/posts/{id}", get().to(get_post))
-        .route("/posts", post().to(create_post))
-        .route("/posts/{id}", patch().to(update_post))
-        .route("/posts/{id}", delete().to(delete_post));
+        .route("/posts", web::get().to(handler::get_posts))
+        .route("/posts/{id}", web::get().to(handler::get_post))
+        .route("/posts", web::post().to(handler::create_post))
+        .route("/posts/{id}", web::patch().to(handler::update_post))
+        .route("/posts/{id}", web::delete().to(handler::delete_post));
 }

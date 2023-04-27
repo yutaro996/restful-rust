@@ -4,7 +4,7 @@ mod repository;
 mod router;
 
 use actix_cors::Cors;
-use actix_web::{middleware::Logger, web::Data, App, HttpServer};
+use actix_web::{middleware, web, App, HttpServer};
 use repository::Repository;
 
 #[actix_web::main]
@@ -20,8 +20,9 @@ async fn main() -> std::io::Result<()> {
             .allow_any_header();
         App::new()
             .wrap(cors)
-            .wrap(Logger::default())
-            .app_data(Data::new(repository.clone()))
+            .wrap(middleware::Logger::default())
+            .wrap(middleware::NormalizePath::trim())
+            .app_data(web::Data::new(repository.clone()))
             .configure(router::configure)
     })
     .bind("0.0.0.0:8080")?
