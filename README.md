@@ -17,7 +17,7 @@ Returns a list of all the blog posts.
 
 #### Response
 
-```json
+```txt
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -48,7 +48,7 @@ Returns the blog post with the specified ID.
 
 #### Response
 
-```json
+```txt
 HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -72,7 +72,7 @@ Creates a new blog post.
 
 ####  Example
 
-```json
+```txt
 POST /posts
 Content-Type: application/json
 
@@ -84,7 +84,7 @@ Content-Type: application/json
 
 #### Response
 
-```json
+```txt
 HTTP/1.1 200 OK
 ```
 
@@ -99,6 +99,7 @@ Updates an existing blog post with the specified ID.
 | id        | int  | The ID of the blog post to update |
 
 #### Request Body
+
 | Field | Type   | Description                       |
 | :---- | :----- | :-------------------------------- |
 | title | string | The new title for the blog post.  |
@@ -106,7 +107,7 @@ Updates an existing blog post with the specified ID.
 
 #### Example
 
-```json
+```txt
 PATCH /posts/1
 Content-Type: application/json
 
@@ -118,7 +119,7 @@ Content-Type: application/json
 
 #### Response
 
-```json
+```txt
 HTTP/1.1 200 OK
 ```
 
@@ -134,7 +135,7 @@ Deletes the blog post with the specified ID.
 
 #### Response
 
-```json
+```txt
 HTTP/1.1 200 OK
 ```
 
