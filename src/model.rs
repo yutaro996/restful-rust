@@ -1,4 +1,4 @@
-use rusqlite::{Row, Error};
+use rusqlite::{Error, Row};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize)]
