@@ -22,11 +22,12 @@ This project is a **RESTFul API** built with **Rust** and the **actix-web** fram
 
 The `src` directory contains the following Rust modules:
 
+- `error.rs`: Contains the error types and handling for the API.
 - `handler.rs`: Contains the HTTP request handlers for the API endpoints.
+- `main.rs`: The main entry point for the application.
 - `model.rs`: Contains the data model for posts.
 - `repository.rs`: Contains the SQLite database repository for storing and retrieving posts.
 - `router.rs`: Contains the routing information for the API endpoints.
-- `main.rs`: The main entry point for the application.
 
 ## Contributing
 
