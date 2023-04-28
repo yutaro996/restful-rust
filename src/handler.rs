@@ -2,39 +2,34 @@ use crate::model::PostRequest;
 use crate::repository::Repository;
 use actix_web::{web, HttpResponse};
 
-pub async fn get_posts(data: web::Data<Repository>) -> HttpResponse {
-    let posts = data.get_posts();
+pub async fn get_posts(repo: web::Data<Repository>) -> HttpResponse {
+    let posts = repo.select_all_posts();
     HttpResponse::Ok().json(posts)
 }
 
-pub async fn get_post(path: web::Path<i32>, data: web::Data<Repository>) -> HttpResponse {
-    let id = path.into_inner();
-    let post = data.get_post(id);
+pub async fn get_post(id: web::Path<i32>, repo: web::Data<Repository>) -> HttpResponse {
+    let post = repo.select_post_with_id(id.into_inner());
     HttpResponse::Ok().json(post)
 }
 
 pub async fn create_post(
-    json: web::Json<PostRequest>,
-    data: web::Data<Repository>,
+    post: web::Json<PostRequest>,
+    repo: web::Data<Repository>,
 ) -> HttpResponse {
-    let post = json.into_inner();
-    data.create_post(post);
+    repo.insert_new_post(post.into_inner());
     HttpResponse::Ok().finish()
 }
 
 pub async fn update_post(
-    path: web::Path<i32>,
-    json: web::Json<PostRequest>,
-    data: web::Data<Repository>,
+    id: web::Path<i32>,
+    post: web::Json<PostRequest>,
+    repo: web::Data<Repository>,
 ) -> HttpResponse {
-    let id = path.into_inner();
-    let post = json.into_inner();
-    data.update_post(id, post);
+    repo.update_post_with_id(id.into_inner(), post.into_inner());
     HttpResponse::Ok().finish()
 }
 
-pub async fn delete_post(path: web::Path<i32>, data: web::Data<Repository>) -> HttpResponse {
-    let id = path.into_inner();
-    data.delete_post(id);
+pub async fn delete_post(id: web::Path<i32>, repo: web::Data<Repository>) -> HttpResponse {
+    repo.delete_post_with_id(id.into_inner());
     HttpResponse::Ok().finish()
 }
