@@ -10,21 +10,19 @@ pub struct Repository {
 }
 
 impl Repository {
-    pub fn new(path: &str) -> Self {
+    pub fn new(path: &str) -> Result<Self, ApiError> {
         let manager = SqliteConnectionManager::file(path);
-        let pool = Pool::new(manager).unwrap();
-        let conn = pool.get().unwrap();
-        let mut stmt = conn
-            .prepare(
-                "CREATE TABLE IF NOT EXISTS post (
+        let pool = Pool::new(manager)?;
+        let conn = pool.get()?;
+        let mut stmt = conn.prepare(
+            "CREATE TABLE IF NOT EXISTS post (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     title STRING NOT NULL,
                     body STRING NOT NULL
                 )",
-            )
-            .unwrap();
-        stmt.execute(()).unwrap();
-        Repository { pool }
+        )?;
+        stmt.execute(())?;
+        Ok(Repository { pool })
     }
 
     pub fn select_all_posts(&self) -> Result<Vec<Post>, ApiError> {
